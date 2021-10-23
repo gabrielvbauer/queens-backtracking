@@ -26,15 +26,24 @@ html, body {
   width: 32px;
   height: 32px;
   display: inline-block;
+  position: relative;
 }
+
+#chess-board i {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+}
+
+
 
 #chess-board div:nth-child(odd) span:nth-child(even),
 #chess-board div:nth-child(even) span:nth-child(odd){
-    background-color: black;
+    background-color: peru;
 }
 #chess-board div:nth-child(even) span:nth-child(even),
 #chess-board div:nth-child(odd) span:nth-child(odd){
-    background-color: snow;
+    background-color: navajowhite;
 }
 
 .options {
