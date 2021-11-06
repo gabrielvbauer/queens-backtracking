@@ -1,36 +1,37 @@
 const solveQueensBacktracking = (n) => {
-    // global results
+    // Array responsável por armazenar as soluções possíveis.
     const results = [];
      
-    const deepFulSearch = (i, n, slate) => {
-      // backtracking case
+    const depthFirstSearch = (i, n, slate) => {
+      // Última rainha baseada no retrocesso.
       let lastQueen = i - 1;
   
       for (let prevQueen = 0; prevQueen < lastQueen; prevQueen++) {
-        // if column has a conflict
+        // Verificação para descobrir se há um conflito na coluna.
         if (slate[prevQueen] === slate[lastQueen]) return;
   
-        // if diagonal has a conflict 
+        // Verificação para saber se há um conflito entre as diagonais.
         let rowDiff = Math.abs(prevQueen - lastQueen);
         let colDiff = Math.abs(slate[prevQueen] - slate[lastQueen]);
         if(rowDiff === colDiff) return;
       }
   
-      // base case 
+      // Busca completa.
       if (i === n) {
         results.push(slate.slice());
         return;
       }
   
-      // deepFulSearch recursive case
+      // Recursividade da busca em profundidade.
       for(let col = 0; col < n; col++) {
         slate.push(col);
-        deepFulSearch(i + 1, n, slate);
+        depthFirstSearch(i + 1, n, slate);
         slate.pop();
       }
     }
   
-    deepFulSearch(0, n, []);
+    // Recursão baseada nos returns.
+    depthFirstSearch(0, n, []);
     
     return {
         total: results.length,
