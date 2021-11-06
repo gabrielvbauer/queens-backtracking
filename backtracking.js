@@ -2,7 +2,7 @@ const solveQueensBacktracking = (n) => {
     // global results
     const results = [];
      
-    const deepFulSearch = (i, n, slate) => {
+    const depthFirstSearch = (i, n, slate) => {
       // backtracking case
       let lastQueen = i - 1;
   
@@ -22,15 +22,15 @@ const solveQueensBacktracking = (n) => {
         return;
       }
   
-      // deepFulSearch recursive case
+      // Depth-First Search recursive case
       for(let col = 0; col < n; col++) {
         slate.push(col);
-        deepFulSearch(i + 1, n, slate);
+        depthFirstSearch(i + 1, n, slate);
         slate.pop();
       }
     }
   
-    deepFulSearch(0, n, []);
+    depthFirstSearch(0, n, []);
     
     return {
         total: results.length,
