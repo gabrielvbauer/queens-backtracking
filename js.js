@@ -1,3 +1,11 @@
+import solveQueensBacktracking from "./backtracking.js";
+
+// put the size of the square here
+const square = 4;
+console.log(solveQueensBacktracking(square).result);
+console.log('Total de possibilidades: ', solveQueensBacktracking(square).total);
+
+/* 
 window.onload = () => {
   drawBoard(8)
 }
@@ -55,20 +63,4 @@ const insertQueen = (ammount) => {
   let icon = document.createElement('i')
   icon.className = queenIcon
   return selectSquare.appendChild(icon)
-}
-
-const backTracking = () => {
-
-}
-
-const hasQueenRow = () => {
-  
-}
-
-const hasQueenCol = () => {
-
-}
-
-const hasQueenDiagonal = () => {
-
-}
+} */
