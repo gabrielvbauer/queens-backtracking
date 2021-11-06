@@ -1,4 +1,3 @@
-
 const solveQueensBacktracking = (n) => {
     // global results
     const results = [];
