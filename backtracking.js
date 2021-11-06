@@ -34,7 +34,8 @@ const solveQueensBacktracking = (n) => {
     
     return {
         total: results.length,
-        result: results.map(board => formatBoard(board))
+        result: results
+        // result: results.map(board => formatBoard(board))
     }
   };
   

@@ -2,6 +2,7 @@ html, body {
   padding: 0;
   margin: 0;
   box-sizing: border-box;
+  font-family: 'Roboto';
 }
 
 .main {
@@ -34,8 +35,6 @@ html, body {
   top: 0;
   bottom: 0;
 }
-
-
 
 #chess-board div:nth-child(odd) span:nth-child(even),
 #chess-board div:nth-child(even) span:nth-child(odd){

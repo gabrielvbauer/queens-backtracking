@@ -1,15 +1,10 @@
 import solveQueensBacktracking from "./backtracking.js";
 
-// put the size of the square here
-const square = 4;
-console.log(solveQueensBacktracking(square).result);
-console.log('Total de possibilidades: ', solveQueensBacktracking(square).total);
+const queenIcon = 'fas fa-chess-queen fa-2x'
  
 window.onload = () => {
   drawBoard(8)
 }
-
-const queenIcon = 'fas fa-chess-queen fa-2x'
 
 function start() {
   const minAmmount = 4;
@@ -18,11 +13,10 @@ function start() {
   ammount < minAmmount ? ammount = minAmmount : ammount
 
   drawBoard(ammount)
-  generateRandomQueen(ammount)
-  factorial(ammount)
+  showSolution(solveQueensBacktracking(ammount))
 }
 
-function drawBoard(ammount, qun) {
+function drawBoard(ammount) {
   let board = document.getElementById("chess-board")
   board.innerHTML = '';
 
@@ -35,31 +29,22 @@ function drawBoard(ammount, qun) {
       square.id = `${row}, ${col}`
     }
   }
-
 }
 
-const factorial = (value) => {
-  if (value === 0 || value === 1) return 1
-  let result = factorial(value - 1) * value
-  let id = document.getElementById('probabilidade')
-  return id.innerHTML = result
+function showSolution(solved) {
+  const solutions = solved.result
+  const totalSolutions = solved.total
+  const solutionToShow = parseInt(Math.random() * totalSolutions)
+  const solution = solutions[solutionToShow]
+
+  solution.forEach((column, row) => {
+    const selectedSquare = document.getElementById(`${row}, ${column}`)
+    const icon = document.createElement('i')
+    icon.className = queenIcon
+    selectedSquare.appendChild(icon)
+  });
+
+  document.getElementById('solucoes').innerHTML = totalSolutions
 }
 
-const generateRandomQueen = (ammount) => {
-  for (let i = 0; i < ammount; i++) {    
-    insertQueen(ammount);
-  }
-}
-
-const insertQueen = (ammount) => {
-  const min = ammount - ammount
-  const max = ammount 
-  const x = parseInt(Math.random() * (max - min) + min)
-  const y = parseInt(Math.random() * (max - min) + min)
-
-  let selectSquare = document.getElementById(`${x}, ${y}`)
-  
-  let icon = document.createElement('i')
-  icon.className = queenIcon
-  return selectSquare.appendChild(icon)
-} 
+document.querySelector('button').addEventListener('click', start)
